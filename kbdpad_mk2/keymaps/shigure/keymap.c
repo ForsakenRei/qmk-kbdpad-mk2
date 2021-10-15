@@ -1,4 +1,4 @@
-/* Copyright 2019 Ryota Goto
+/* Copyright 2021 Shigure
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +15,19 @@
  */
 #include QMK_KEYBOARD_H
 
+enum custom_keycodes {
+  TG_OVLY = SAFE_RANGE,
+  DS_MUTE,
+  DS_DEAF
+};
+
+#define TG_OVLY S(KC_GRV)
+#define DS_MUTE C(S(KC_M))
+#define DS_DEAF C(S(KC_D))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ortho_6x4( /* Base */
-    KC_ESC,  KC_CALC, OSL(1), KC_BSPC,
+    KC_ESC,  KC_CALC, TT(1),  KC_BSPC,
     KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
     KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
     KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
@@ -26,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_P0,   KC_P0,   KC_PDOT, KC_PENT
   ),
   [1] = LAYOUT_ortho_6x4(
-    _______, TG(2),  TG(3),    TO(0),
+    _______, TG(2),   TG(3),   TO(0),
     KC_F10,  KC_F11,  KC_F12,  KC_PSCR,
     KC_F7,   KC_F8,   KC_F9,   KC_TAB,
     KC_F4,   KC_F5,   KC_F6,   KC_TAB,
@@ -34,19 +43,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_COPY, KC_COPY, KC_PSTE, KC_PENT
   ),
   [2] = LAYOUT_ortho_6x4(
-    RESET,   TG(1),  TG(3),    TO(0),
+    _______,  TO(1),   TG(3),   TO(0),
+    KC_RGUI, _______, _______, _______,
+    KC_F17,  KC_F18,  KC_F19, DS_DEAF,
+    KC_F14,  KC_F15,  KC_F16,  DS_DEAF,
+    KC_F11,  KC_F12,  KC_F13,  DS_MUTE,
+    TG_OVLY, TG_OVLY, KC_MUTE, DS_MUTE
+  ),
+  [3] = LAYOUT_ortho_6x4(
+    RESET,   TO(1),   TO(2),   TO(0),
     _______, _______, _______, _______,
     KC_WH_D, KC_MS_U, KC_WH_U, _______,
     KC_MS_L, KC_BTN1, KC_MS_R, _______,
     KC_WH_L, KC_MS_D, KC_WH_R, _______,
-    _______, _______, _______, _______
-  ),
-  [3] = LAYOUT_ortho_6x4(
-    _______, _______, _______, _______,
-    _______, _______, _______, _______,
-    _______, _______, _______, _______,
-    _______, _______, _______, _______,
-    _______, _______, _______, _______,
     _______, _______, _______, _______
   ),
 };
