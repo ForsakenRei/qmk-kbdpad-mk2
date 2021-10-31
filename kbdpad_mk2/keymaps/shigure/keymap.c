@@ -27,7 +27,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ortho_6x4( /* Base */
-    KC_ESC,  KC_CALC, TT(1),  KC_BSPC,
+    KC_ESC,  KC_CALC, TT(1),   KC_BSPC,
     KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
     KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
     KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
@@ -43,19 +43,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_COPY, KC_COPY, KC_PSTE, KC_PENT
   ),
   [2] = LAYOUT_ortho_6x4(
-    _______,  TO(1),   TG(3),   TO(0),
-    KC_RGUI, _______, _______, _______,
-    KC_F17,  KC_F18,  KC_F19, DS_DEAF,
-    KC_F14,  KC_F15,  KC_F16,  DS_DEAF,
-    KC_F11,  KC_F12,  KC_F13,  DS_MUTE,
-    TG_OVLY, TG_OVLY, KC_MUTE, DS_MUTE
+    _______, TO(1),   TG(3),  TO(0),
+    KC_F22,  KC_F23,  KC_F24,  KC_RGUI,
+    KC_F19,  KC_F20,  KC_F21,  KC_F14,
+    KC_F16,  KC_F17,  KC_F18,  KC_F14,
+    KC_F13,  KC_F14,  KC_F15,  KC_F13,
+    KC_MUTE, KC_MUTE, KC_MUTE, KC_F13
   ),
   [3] = LAYOUT_ortho_6x4(
     RESET,   TO(1),   TO(2),   TO(0),
     _______, _______, _______, _______,
     KC_WH_D, KC_MS_U, KC_WH_U, _______,
     KC_MS_L, KC_BTN1, KC_MS_R, _______,
-    KC_WH_L, KC_MS_D, KC_WH_R, _______,
-    _______, _______, _______, _______
+    KC_WH_L, KC_MS_D, KC_WH_R, DS_MUTE,
+    _______, _______, _______, DS_MUTE
   ),
 };
