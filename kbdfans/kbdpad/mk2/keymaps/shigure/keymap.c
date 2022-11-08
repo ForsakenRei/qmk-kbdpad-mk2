@@ -15,6 +15,11 @@
  */
 #include QMK_KEYBOARD_H
 
+void matrix_init_user(void)
+{   
+	rgblight_setrgb(0, 0, 0);
+}
+
 enum custom_keycodes {
   DS_MUTE = SAFE_RANGE,
   DS_DEAF
