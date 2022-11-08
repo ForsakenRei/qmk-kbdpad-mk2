@@ -16,19 +16,17 @@
 #include QMK_KEYBOARD_H
 
 enum custom_keycodes {
-  TG_OVLY = SAFE_RANGE,
-  DS_MUTE,
+  DS_MUTE = SAFE_RANGE,
   DS_DEAF
 };
 
-#define TG_OVLY S(KC_GRV)
 #define DS_MUTE C(S(KC_M))
 #define DS_DEAF C(S(KC_D))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ortho_6x4( /* Base */
     KC_ESC,  KC_CALC, TT(1),   KC_BSPC,
-    KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
+    KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,
     KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
     KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
     KC_P1,   KC_P2,   KC_P3,   KC_PENT,
@@ -45,17 +43,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [2] = LAYOUT_ortho_6x4(
     _______, TO(1),   TG(3),  TO(0),
     KC_F22,  KC_F23,  KC_F24,  KC_RGUI,
-    KC_F19,  KC_F20,  KC_F21,  KC_F14,
-    KC_F16,  KC_F17,  KC_F18,  KC_F14,
-    KC_F13,  KC_F14,  KC_F15,  KC_F13,
-    KC_MUTE, KC_MUTE, KC_MUTE, KC_F13
+    KC_F19,  KC_F20,  KC_F21,  DS_DEAF,
+    KC_F16,  KC_F17,  KC_F18,  DS_DEAF,
+    KC_F13,  KC_F14,  KC_F15,  DS_MUTE,
+    KC_MUTE, KC_MUTE, KC_MUTE, DS_MUTE
   ),
   [3] = LAYOUT_ortho_6x4(
     QK_BOOT, TO(1),   TO(2),   TO(0),
     _______, _______, _______, _______,
-    KC_WH_D, KC_MS_U, KC_WH_U, _______,
-    KC_MS_L, KC_BTN1, KC_MS_R, _______,
+    KC_WH_D, KC_MS_U, KC_WH_U, DS_DEAF,
+    KC_MS_L, KC_BTN1, KC_MS_R, DS_DEAF,
     KC_WH_L, KC_MS_D, KC_WH_R, DS_MUTE,
-    _______, _______, _______, DS_MUTE
+    KC_MUTE, KC_MUTE, _______, DS_MUTE
   ),
 };
