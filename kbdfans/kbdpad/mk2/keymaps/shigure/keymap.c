@@ -20,6 +20,24 @@ void matrix_init_user(void)
 	rgblight_setrgb(0, 0, 0);
 }
 
+layer_state_t layer_state_set_user(layer_state_t layer_state) {
+    switch (get_highest_layer(layer_state)) {
+        case 1:
+            {rgblight_setrgb(170, 204, 17);}
+            break;
+        case 2: 
+            {rgblight_setrgb(255, 153, 0);}
+            break;
+        case 3:
+            {rgblight_setrgb(238, 0, 119);}
+            break;
+        default:
+            {rgblight_setrgb(0, 0, 0);}
+            break;
+    }
+    return layer_state;
+}
+
 enum custom_keycodes {
   DS_MUTE = SAFE_RANGE,
   DS_DEAF
@@ -30,7 +48,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ortho_6x4( /* Base */
-    KC_ESC,  KC_CALC, TT(1),   KC_BSPC,
+    KC_ESC,  KC_CALC, TO(1),   KC_BSPC,
     KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,
     KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
     KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
